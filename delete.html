@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Yeriho account deletion request page. Submit the request form to delete your account and related data." />
+  <title>Yeriho — Account Deletion</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f172a;
+      --card:#0f1623;
+      --stroke:#233044;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --brand:#9884ff;
+      --ok:#10b981;
+      --danger:#ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(152,132,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 30%, rgba(16,185,129,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #070b14 100%);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(15,23,42,.90), rgba(15,23,42,.65));
+      border-bottom: 1px solid rgba(35,48,68,.55);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(152,132,255,.35), rgba(152,132,255,.10));
+      border:1px solid rgba(152,132,255,.35);
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .brand-title{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand-title b{font-size:14.5px; letter-spacing:.2px}
+    .brand-title span{font-size:12px; color:var(--muted)}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      font-size:12.8px;
+      color:var(--text);
+      padding:8px 10px;
+      border:1px solid rgba(229,231,235,.12);
+      border-radius:12px;
+      background: rgba(255,255,255,.04);
+    }
+    .nav a:hover{border-color: rgba(152,132,255,.35)}
+    .hero{
+      padding:28px 0 18px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(15,22,35,.92), rgba(11,18,32,.92));
+      border:1px solid rgba(35,48,68,.85);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card-pad{padding:18px}
+    h1{
+      margin:0 0 8px;
+      font-size:22px;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+    }
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12.6px;
+      border:1px solid rgba(229,231,235,.12);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px; background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(152,132,255,.12);
+    }
+    .dot.ok{background: var(--ok); box-shadow: 0 0 0 4px rgba(16,185,129,.12);}
+    .dot.danger{background: var(--danger); box-shadow: 0 0 0 4px rgba(239,68,68,.12);}
+    .section{
+      padding:12px 0 28px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:15.5px;
+      letter-spacing:.2px;
+    }
+    .steps{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .num{
+      width:28px; height:28px; flex:0 0 28px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      background: rgba(152,132,255,.12);
+      border:1px solid rgba(152,132,255,.25);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+    }
+    .step b{display:block; font-size:13.4px; margin-bottom:3px}
+    .step p{margin:0; color:var(--muted); font-size:13px}
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius:14px;
+      padding:12px 14px;
+      text-decoration:none;
+      border:1px solid rgba(229,231,235,.14);
+      background: rgba(255,255,255,.04);
+      font-weight:800;
+      font-size:13.2px;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(152,132,255,.95), rgba(152,132,255,.55));
+      border-color: rgba(152,132,255,.45);
+      color:#0b1020;
+    }
+    .btn-primary:hover{filter: brightness(1.03)}
+    .btn-ghost:hover{border-color: rgba(152,132,255,.35)}
+    .note{
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border:1px dashed rgba(229,231,235,.18);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-size:12.8px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .grid2{grid-template-columns:1fr}
+    }
+    .mini{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .mini h3{
+      margin:0 0 6px;
+      font-size:13.5px;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted);
+      font-size:12.9px;
+    }
+    .footer{
+      border-top:1px solid rgba(35,48,68,.65);
+      margin-top:26px;
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:12.6px;
+    }
+    .foot-row{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .foot-links a{
+      margin-right:12px;
+      text-decoration:none;
+      border-bottom:1px dotted rgba(229,231,235,.25);
+    }
+    .foot-links a:hover{border-bottom-color: rgba(152,132,255,.6)}
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12.4px;
+      color: var(--text);
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(229,231,235,.10);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Yeriho Home">
+          <div class="logo">Y</div>
+          <div class="brand-title">
+            <b>Yeriho</b>
+            <span>Account Deletion</span>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Top navigation">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="index.html#help">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="card-pad">
+            <h1>Request Account Deletion</h1>
+            <p class="sub">
+              Use this page to request deletion of your Yeriho account. You must submit the deletion request form.
+              After your request is verified, deletion is processed within <b>7–30 days</b>.
+            </p>
+
+            <div class="pill-row" role="list">
+              <div class="pill" role="listitem"><span class="dot"></span> Form required</div>
+              <div class="pill" role="listitem"><span class="dot ok"></span> Confirmation email after deletion</div>
+              <div class="pill" role="listitem"><span class="dot danger"></span> Form can be submitted only once</div>
+            </div>
+
+            <div class="cta">
+              <!-- Replace the # with your Google Form link later -->
+              <a class="btn btn-primary" id="applyBtn" href="#" target="_blank" rel="noopener">
+                Apply for Deletion
+              </a>
+              <a class="btn btn-ghost" href="index.html#help">Contact Support</a>
+            </div>
+
+            <div class="note">
+              <b>Important:</b> The deletion request form can be submitted only <b>one time</b>.
+              If you submitted it by mistake, please contact support using the email mentioned in the Support section.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-pad">
+            <h2>What happens after you submit?</h2>
+            <ul class="steps">
+              <li class="step">
+                <div class="num">1</div>
+                <div>
+                  <b>Fill the deletion request form</b>
+                  <p>Enter the correct details so we can locate and verify your account.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">2</div>
+                <div>
+                  <b>We verify the request</b>
+                  <p>We may verify that the request belongs to the account owner.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">3</div>
+                <div>
+                  <b>Deletion is processed (7–30 days)</b>
+                  <p>Once verified, the account deletion is completed within the stated timeline.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">4</div>
+                <div>
+                  <b>Confirmation email</b>
+                  <p>After deletion is completed, you will receive a confirmation email.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="note" style="margin-top:14px">
+              If you do not see the form button working, it means the form link is not added yet.
+              We will update the button link later.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-pad">
+          <h2>Instructions to fill the request form</h2>
+
+          <div class="grid2">
+            <div class="mini">
+              <h3>Use the same account details</h3>
+              <p>
+                Provide the same details you used in the app (email/phone/user id, if asked).
+                Wrong details may delay verification.
+              </p>
+            </div>
+            <div class="mini">
+              <h3>Submit only once</h3>
+              <p>
+                The form can be submitted only <b>one time</b>. Please double-check before submitting.
+                If you submitted by mistake, contact support.
+              </p>
+            </div>
+            <div class="mini">
+              <h3>Timeline</h3>
+              <p>
+                Account deletion typically takes <b>7–30 days</b> after verification.
+                You’ll receive a confirmation email once completed.
+              </p>
+            </div>
+            <div class="mini">
+              <h3>Need help?</h3>
+              <p>
+                If you face issues, use the Support section on the Home page.
+                Keep your request details ready while contacting support.
+              </p>
+            </div>
+          </div>
+
+          <div class="note">
+            Tip: After we add the Google Form link, the <b>Apply for Deletion</b> button will open the form in a new tab.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap" style="padding:0">
+        <div class="foot-row">
+          <div>
+            <b style="color:var(--text)">Yeriho</b><br/>
+            <span>© <span id="y"></span> Yeriho. All rights reserved.</span>
+          </div>
+          <div class="foot-links" aria-label="Footer links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="index.html#help">Support</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Optional: Later when you have the Google Form link, replace this:
+    // document.getElementById('applyBtn').href = 'PASTE_YOUR_GOOGLE_FORM_LINK_HERE';
+  </script>
+</body>
+</html>

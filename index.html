@@ -4,19 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yeriho — Official Website</title>
-  <meta name="description" content="Yeriho — notes, music tools, and content utilities. Get support, request account deletion, and read the privacy policy." />
+
+  <meta name="description" content="Yeriho is a Christian app with multi-language Bibles (audio, bookmarks, history, verse share), notes, articles, daily prayers, watch & worship, music/notation tools, and quizzes." />
   <meta name="theme-color" content="#0F172A" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Yeriho — Official Website" />
-  <meta property="og:description" content="Notes, music tools, and content utilities. Support, account deletion, and privacy policy." />
+  <meta property="og:description" content="Bibles, Notes, Articles, Daily Prayers, Watch & Worship, Music & Notation, and Quizzes — in multiple languages." />
   <meta property="og:type" content="website" />
 
   <style>
     :root{
       --bgA:#0F172A;
       --bgB:#1F2937;
-      --surface:#0F1623;
+
+      --panel:#0F1623;
       --cardA:#101826;
       --cardB:#0B1422;
       --stroke:#233044;
@@ -31,8 +33,7 @@
 
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 18px;
-
-      --max: 1120px;
+      --max: 1160px;
     }
 
     *{ box-sizing:border-box }
@@ -42,8 +43,8 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 18% 10%, rgba(152,132,255,.22), transparent 60%),
-        radial-gradient(900px 500px at 85% 30%, rgba(96,165,250,.16), transparent 60%),
+        radial-gradient(1000px 520px at 18% 10%, rgba(152,132,255,.22), transparent 60%),
+        radial-gradient(900px 520px at 85% 30%, rgba(96,165,250,.14), transparent 60%),
         linear-gradient(180deg, var(--bgA) 0%, #070B14 100%);
       line-height:1.55;
     }
@@ -54,7 +55,7 @@
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(15,23,42,.92) 0%, rgba(15,22,35,.65) 100%);
+      background: linear-gradient(180deg, rgba(15,23,42,.92) 0%, rgba(15,22,35,.62) 100%);
       border-bottom: 1px solid rgba(35,48,68,.65);
     }
     .topbar-inner{
@@ -64,7 +65,7 @@
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      min-width: 180px;
+      min-width: 200px;
     }
     .logo{
       width:38px; height:38px; border-radius:12px;
@@ -75,10 +76,10 @@
       border: 1px solid rgba(255,255,255,.16);
     }
     .brand h1{
-      font-size:15.5px; margin:0; font-weight:800; letter-spacing:.2px;
+      font-size:15.5px; margin:0; font-weight:900; letter-spacing:.2px;
     }
     .brand p{
-      margin:0; font-size:12px; color:var(--muted); font-weight:600;
+      margin:0; font-size:12px; color:var(--muted); font-weight:650;
     }
     .nav{
       display:flex; gap:10px; align-items:center; flex-wrap:wrap;
@@ -92,7 +93,7 @@
       background: rgba(15,22,35,.55);
       color: var(--text);
       font-size:12.5px;
-      font-weight:700;
+      font-weight:850;
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
       user-select:none;
     }
@@ -108,16 +109,14 @@
     }
 
     /* Hero */
-    .hero{
-      padding:42px 0 22px;
-    }
+    .hero{ padding:44px 0 18px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.3fr .9fr;
-      gap:18px;
+      grid-template-columns: 1.25fr .95fr;
+      gap:16px;
       align-items:stretch;
     }
-    .hero-card{
+    .panel{
       border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(16,24,38,.78) 0%, rgba(11,20,34,.78) 100%);
       border:1px solid rgba(35,48,68,.85);
@@ -125,21 +124,19 @@
       overflow:hidden;
       position:relative;
     }
-    .hero-card::before{
+    .panel::before{
       content:"";
       position:absolute; inset:-1px;
       background:
-        radial-gradient(700px 260px at 20% 0%, rgba(152,132,255,.20), transparent 60%),
-        radial-gradient(700px 260px at 80% 10%, rgba(96,165,250,.14), transparent 60%);
+        radial-gradient(760px 280px at 18% 0%, rgba(152,132,255,.20), transparent 60%),
+        radial-gradient(760px 280px at 86% 10%, rgba(96,165,250,.14), transparent 60%);
       pointer-events:none;
     }
-    .hero-inner{
-      position:relative;
-      padding:26px;
-    }
+    .panel-inner{ position:relative; padding:26px; }
+
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
-      font-size:12px; font-weight:800;
+      font-size:12px; font-weight:900;
       letter-spacing:.35px;
       color: rgba(229,231,235,.92);
       background: rgba(15,22,35,.55);
@@ -157,28 +154,27 @@
       font-size:36px;
       line-height:1.12;
       letter-spacing:-.5px;
-      font-weight:900;
+      font-weight:950;
     }
     .hero p{
       margin:0 0 16px;
       color: var(--muted);
-      font-size:14.5px;
+      font-size:14.6px;
       font-weight:650;
-      max-width: 58ch;
+      max-width: 66ch;
     }
-    .cta-row{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 18px;
-    }
+
+    .cta-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; }
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:11px 14px;
       border-radius: 14px;
-      font-weight:850;
+      font-weight:900;
       font-size:13px;
       border:1px solid rgba(229,231,235,.12);
       background: rgba(15,22,35,.55);
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      cursor:pointer;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -191,52 +187,75 @@
       color:#081023;
     }
 
-    /* Right panel */
-    .side{
+    /* Download cards */
+    .download{
       display:flex;
       flex-direction:column;
       gap:12px;
     }
-    .mini{
+    .dl-card{
       padding:18px;
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(16,24,38,.70) 0%, rgba(11,20,34,.70) 100%);
+      background: linear-gradient(180deg, rgba(16,24,38,.72) 0%, rgba(11,20,34,.72) 100%);
       border:1px solid rgba(35,48,68,.85);
       box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
-    .mini h3{
-      margin:0 0 8px;
-      font-size:14px;
+    .dl-card::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(420px 220px at 20% 10%, rgba(152,132,255,.14), transparent 70%),
+        radial-gradient(420px 220px at 80% 10%, rgba(96,165,250,.10), transparent 70%);
+      pointer-events:none;
+    }
+    .dl-inner{ position:relative; }
+    .dl-title{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom:8px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(229,231,235,.12);
+      background: rgba(15,22,35,.48);
+      font-size:12px;
       font-weight:900;
-      letter-spacing:.2px;
+      color: var(--text);
+      user-select:none;
+      white-space:nowrap;
     }
-    .mini p{ margin:0; color:var(--muted); font-size:12.8px; font-weight:650; }
-    .list{
-      margin:12px 0 0; padding:0; list-style:none;
-      display:grid; gap:10px;
-    }
-    .item{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px;
+    .dl-card h3{ margin:0; font-size:15.2px; font-weight:950; letter-spacing:.2px; }
+    .dl-card p{ margin:0; color:var(--muted); font-size:12.9px; font-weight:650; }
+
+    .dl-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .btn-wide{
+      width:100%;
+      padding:12px 14px;
       border-radius: 14px;
-      border: 1px solid rgba(229,231,235,.10);
-      background: rgba(15,22,35,.45);
+      border:1px solid rgba(229,231,235,.12);
+      background: rgba(15,22,35,.55);
+      color: var(--text);
+      font-weight:950;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
     }
-    .ico{
-      flex:0 0 auto;
-      width:34px; height:34px;
-      border-radius: 12px;
-      display:flex; align-items:center; justify-content:center;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(152,132,255,.10);
+    .btn-wide:hover{
+      transform: translateY(-1px);
+      border-color: rgba(152,132,255,.35);
+      background: rgba(15,22,35,.78);
     }
-    .item b{ display:block; font-size:12.8px; font-weight:900; }
-    .item span{ display:block; color:var(--muted); font-size:12.2px; font-weight:650; margin-top:2px; }
+    .btn-wide.primary{
+      background: linear-gradient(135deg, rgba(152,132,255,.95) 0%, rgba(96,165,250,.75) 100%);
+      border-color: rgba(255,255,255,.18);
+      color:#081023;
+    }
 
     /* Sections */
-    .section{
-      padding:18px 0 34px;
-    }
+    .section{ padding:18px 0 34px; }
     .section-title{
       display:flex; align-items:baseline; justify-content:space-between; gap:12px;
       margin: 10px 0 12px;
@@ -253,6 +272,7 @@
       font-size:12.8px;
       font-weight:650;
     }
+
     .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -264,17 +284,102 @@
       border:1px solid rgba(35,48,68,.85);
       box-shadow: var(--shadow);
       padding:16px;
-      min-height: 140px;
+      min-height: 150px;
     }
     .card b{ display:block; font-size:13.4px; font-weight:950; margin-bottom:6px; }
-    .card p{ margin:0; color:var(--muted); font-size:12.8px; font-weight:650; }
-    .card a{
-      display:inline-flex; align-items:center; gap:8px;
+    .card p{ margin:0; color:var(--muted); font-size:12.9px; font-weight:650; }
+    .card .meta{
       margin-top:12px;
-      color: rgba(229,231,235,.95);
-      font-weight:850;
-      font-size:12.6px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: rgba(229,231,235,.92);
+      font-weight:900;
+      font-size:12.2px;
     }
+    .tag{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+    }
+
+    /* Accordion (Useful links) */
+    .accordion{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,48,68,.85);
+      background: linear-gradient(180deg, rgba(16,24,38,.62) 0%, rgba(11,20,34,.62) 100%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .acc-btn{
+      width:100%;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:16px;
+      background: transparent;
+      border:0;
+      color: var(--text);
+      font-weight:950;
+      cursor:pointer;
+      font-size:14px;
+    }
+    .acc-btn:hover{ background: rgba(255,255,255,.03); }
+    .acc-sub{ color: var(--muted); font-size:12.7px; font-weight:650; margin-top:4px; }
+    .acc-icon{
+      width:36px; height:36px; border-radius:12px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 auto;
+      transition: transform .18s ease;
+    }
+    .acc-open .acc-icon{ transform: rotate(180deg); }
+    .acc-panel{
+      max-height:0;
+      overflow:hidden;
+      transition: max-height .22s ease;
+      border-top: 1px solid rgba(35,48,68,.65);
+    }
+    .acc-body{ padding:14px 16px 16px; }
+
+    .linkgrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    .linkcard{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+    }
+    .linkcard b{ display:block; font-size:13px; font-weight:950; margin-bottom:6px; }
+    .linkcard a{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:10px;
+      font-weight:950;
+      font-size:12.8px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12.2px;
+    }
+
+    /* Support box */
+    .support-box{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,24,38,.68) 0%, rgba(11,20,34,.68) 100%);
+      border:1px solid rgba(35,48,68,.85);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .support-row{
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .support-box h4{ margin:0 0 6px; font-size:14px; font-weight:950; }
+    .support-box p{ margin:0; color:var(--muted); font-size:12.9px; font-weight:650; max-width: 72ch; }
+    .support-actions{ display:flex; gap:10px; flex-wrap:wrap; }
 
     /* Footer */
     footer{
@@ -297,19 +402,45 @@
       border:1px solid rgba(229,231,235,.10);
       background: rgba(15,22,35,.45);
       color: var(--text);
-      font-weight:800;
+      font-weight:900;
       font-size:12px;
+    }
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events:none;
+      background: rgba(15,22,35,.92);
+      border:1px solid rgba(229,231,235,.14);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-size: 12.8px;
+      font-weight: 850;
+      transition: opacity .18s ease, transform .18s ease;
+      max-width: min(560px, calc(100% - 22px));
+      text-align:center;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     /* Responsive */
     @media (max-width: 920px){
       .hero-grid{ grid-template-columns: 1fr; }
       .hero h2{ font-size:32px; }
+      .linkgrid{ grid-template-columns: 1fr; }
     }
     @media (max-width: 740px){
       .grid3{ grid-template-columns: 1fr; }
       .brand{ min-width:auto; }
-      .hero-inner{ padding:20px; }
+      .panel-inner{ padding:20px; }
       .topbar-inner{ padding:12px 0; }
     }
   </style>
@@ -328,75 +459,69 @@
         </div>
 
         <nav class="nav" aria-label="Main navigation">
+          <a class="pill" href="#about">About</a>
           <a class="pill" href="#features">Features</a>
-          <a class="pill" href="#help">Support</a>
-          <a class="pill" href="#legal">Legal</a>
-          <a class="pill primary" href="#help">Get Help</a>
+          <a class="pill" href="#support">Support</a>
+          <a class="pill" href="#links">Useful Links</a>
+          <a class="pill primary" href="#download">Download</a>
         </nav>
       </div>
     </div>
   </div>
 
   <main>
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero" id="about">
       <div class="wrap">
         <div class="hero-grid">
-
-          <!-- Left -->
-          <div class="hero-card">
-            <div class="hero-inner">
-              <div class="kicker"><span class="dot"></span> Live & maintained</div>
-              <h2>Yeriho — Notes, Music Tools, and Content Utilities</h2>
+          <div class="panel">
+            <div class="panel-inner">
+              <div class="kicker"><span class="dot"></span> Official Yeriho Website</div>
+              <h2>Grow spiritually with Bible, Notes, Worship, Music & More</h2>
               <p>
-                This is the official website for Yeriho. You can contact support, request account deletion,
-                and read our privacy policy and terms.
+                Yeriho is a Christian app where you can read multi-language Bibles with audio,
+                create beautiful personal notes, read articles, find daily prayers, watch worship collections,
+                practice music with notation tools, and take quizzes — all in one place.
               </p>
 
               <div class="cta-row">
-                <a class="btn primary" href="#help" aria-label="Go to support section">Support & Help</a>
-                <a class="btn" href="#legal" aria-label="Go to legal section">Privacy & Terms</a>
-                <a class="btn" href="#deletion" aria-label="Go to account deletion section">Account Deletion</a>
+                <a class="btn primary" href="#download" aria-label="Go to download section">Download</a>
+                <a class="btn" href="#features" aria-label="Go to features section">Explore Features</a>
+                <a class="btn" href="#support" aria-label="Go to support section">Get Support</a>
               </div>
             </div>
           </div>
 
-          <!-- Right -->
-          <div class="side">
-            <div class="mini">
-              <h3>Quick Links</h3>
-              <p>Fast access to the important pages.</p>
-
-              <ul class="list">
-                <li class="item">
-                  <div class="ico" aria-hidden="true">🛟</div>
-                  <div>
-                    <b>Support</b>
-                    <span>Get help, report issues, and contact us.</span>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="ico" aria-hidden="true">🗑️</div>
-                  <div>
-                    <b>Account deletion</b>
-                    <span>Request deletion of your account/data.</span>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="ico" aria-hidden="true">🔒</div>
-                  <div>
-                    <b>Privacy</b>
-                    <span>Read how data is handled in Yeriho.</span>
-                  </div>
-                </li>
-              </ul>
+          <!-- DOWNLOAD PREVIEW (2 big containers) -->
+          <div class="download" id="download">
+            <div class="dl-card">
+              <div class="dl-inner">
+                <div class="dl-title">
+                  <h3>Download for Android</h3>
+                  <span class="badge">Play Store</span>
+                </div>
+                <p>Play Store link will be added soon.</p>
+                <div class="dl-actions">
+                  <button class="btn-wide primary" type="button" data-coming-soon="Play Store link will be added soon.">
+                    Download on Play Store
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div class="mini">
-              <h3>For Store Compliance</h3>
-              <p>
-                This website is designed to meet common Play Store / App Store requirements:
-                support contact, account deletion instructions, and privacy policy access.
-              </p>
+            <div class="dl-card">
+              <div class="dl-inner">
+                <div class="dl-title">
+                  <h3>Download for iPhone</h3>
+                  <span class="badge">App Store</span>
+                </div>
+                <p>iOS App Store link will be added soon.</p>
+                <div class="dl-actions">
+                  <button class="btn-wide" type="button" data-coming-soon="iOS App Store link will be added soon.">
+                    Download on App Store
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -404,127 +529,203 @@
       </div>
     </section>
 
+    <!-- FEATURES -->
     <section id="features" class="section">
       <div class="wrap">
         <div class="section-title">
-          <h3>What Yeriho provides</h3>
-          <p>Simple overview for visitors & reviewers.</p>
+          <h3>What you can do in Yeriho</h3>
+          <p>A clear overview for users and store reviewers.</p>
         </div>
 
         <div class="grid3">
           <div class="card">
-            <b>Notes & content</b>
-            <p>Create and manage content with a clean, mobile-first experience.</p>
+            <b>Home Feed</b>
+            <p>See posts and updates directly from Yeriho.</p>
+            <div class="meta">
+              <span class="tag">Updates</span>
+              <span class="tag">Announcements</span>
+            </div>
           </div>
 
           <div class="card">
-            <b>Music tools</b>
-            <p>Music utilities designed for practice and learning workflows.</p>
+            <b>Bibles (Multi-language + Audio)</b>
+            <p>Read the Bible in many languages with audio, bookmarks, history, and verse sharing.</p>
+            <div class="meta">
+              <span class="tag">Audio</span>
+              <span class="tag">Bookmarks</span>
+              <span class="tag">Share verses</span>
+            </div>
           </div>
 
           <div class="card">
-            <b>Offline-friendly</b>
-            <p>Designed with caching and reliability in mind where applicable.</p>
+            <b>Notes (Creative + Searchable)</b>
+            <p>Create attractive notes in two formats — Creative and Searchable — with share/restore support.</p>
+            <div class="meta">
+              <span class="tag">Creative</span>
+              <span class="tag">Search</span>
+              <span class="tag">Share/Restore</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Books & Journals</b>
+            <p>Create books and personal journals for writing, reflections, and study.</p>
+            <div class="meta">
+              <span class="tag">Journals</span>
+              <span class="tag">Personal writing</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Articles (Multi-language)</b>
+            <p>Read articles from the Yeriho editorial desk and partner writers in multiple languages.</p>
+            <div class="meta">
+              <span class="tag">Editorial</span>
+              <span class="tag">Partners</span>
+              <span class="tag">Multi-language</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Daily Prayers</b>
+            <p>Find prayers for different situations in multiple languages — helpful for new believers too.</p>
+            <div class="meta">
+              <span class="tag">Situations</span>
+              <span class="tag">Multi-language</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Watch & Worship</b>
+            <p>Curated worship video collections that open in YouTube and other streaming platforms.</p>
+            <div class="meta">
+              <span class="tag">Collections</span>
+              <span class="tag">YouTube</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Music & Notation</b>
+            <p>Practice keyboard and octapad, create notation diagrams, and play them for easier learning.</p>
+            <div class="meta">
+              <span class="tag">Keyboard</span>
+              <span class="tag">Octapad</span>
+              <span class="tag">Notation</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <b>Quizzes</b>
+            <p>Quizzes are updated regularly and available in multiple languages.</p>
+            <div class="meta">
+              <span class="tag">Regular updates</span>
+              <span class="tag">Multi-language</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="help" class="section">
+    <!-- SUPPORT -->
+    <section id="support" class="section">
       <div class="wrap">
         <div class="section-title">
-          <h3>Support</h3>
-          <p>Choose one method and contact us.</p>
+          <h3>Help & Support</h3>
+          <p>Primary support method: email. In-app ticket support is also available.</p>
         </div>
 
-        <div class="grid3">
-          <div class="card">
-            <b>Contact support</b>
-            <p>Use your preferred method to reach us.</p>
-            <a href="mailto:support@yeriho.app" aria-label="Email support">Email: support@yeriho.app →</a>
-            <div style="height:8px"></div>
-            <a href="#deletion" aria-label="Account deletion section">Account deletion help →</a>
+        <div class="support-box">
+          <div class="support-row">
+            <div>
+              <h4>Support contact</h4>
+              <p>
+                For any issue or question, contact us by email. You can also contact support inside the app using the in-app
+                support chat/ticket system (create a ticket from the app with your problem details).
+              </p>
+              <p style="margin-top:10px">
+                <span class="mono">support@yeriho.com</span>
+              </p>
+            </div>
+
+            <div class="support-actions">
+              <a class="btn primary" href="mailto:support@yeriho.com?subject=Yeriho%20Support%20Request">Email Support</a>
+              <a class="btn" href="#links">Useful Links</a>
+            </div>
           </div>
 
-          <div class="card">
-            <b>Report a problem</b>
-            <p>If something isn’t working, include: app version, device model, and steps to reproduce.</p>
-            <a href="mailto:support@yeriho.app?subject=Yeriho%20Support%20Request" aria-label="Send a support email">Send details →</a>
-          </div>
-
-          <div class="card">
-            <b>Response note</b>
-            <p>Support is handled in the order requests are received. Please include accurate details for faster help.</p>
-            <a href="#legal" aria-label="Go to privacy section">Privacy & terms →</a>
+          <div style="height:12px"></div>
+          <div class="card" style="min-height:auto; padding:14px; background: rgba(15,22,35,.45); border-color: rgba(229,231,235,.10); box-shadow:none;">
+            <b>Tips for faster support</b>
+            <p style="margin:0; color:var(--muted); font-weight:650; font-size:12.9px;">
+              Include your app version, device model, and steps to reproduce the issue. If it’s a payment/ad issue, include the date/time and what happened.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="deletion" class="section">
+    <!-- USEFUL LINKS (HIDDEN UNTIL EXPANDED) -->
+    <section id="links" class="section">
       <div class="wrap">
         <div class="section-title">
-          <h3>Account deletion</h3>
-          <p>Submit your request using the method below.</p>
+          <h3>Useful Links</h3>
+          <p>Expand to view legal and account options.</p>
         </div>
 
-        <div class="grid3">
-          <div class="card">
-            <b>Request deletion (recommended)</b>
-            <p>
-              Fill the account deletion request form. Please enter the same email/phone used in the app.
-            </p>
-            <!-- Replace this link with your real Google Form link if you want -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIvYsNS-OyNV7ctjU-uGYTA_XQc-P96ldTT_goLdYlygj8Iw/viewform?usp=dialog" target="_blank" rel="noreferrer">
-              Open deletion request form →
-            </a>
-          </div>
+        <div class="accordion" id="usefulAccordion">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="accPanel">
+            <div>
+              Open useful links
+              <div class="acc-sub">Privacy Policy • Terms • Account Deletion • Support</div>
+            </div>
+            <div class="acc-icon" aria-hidden="true">⌄</div>
+          </button>
 
-          <div class="card">
-            <b>By email</b>
-            <p>
-              If the form doesn’t open, email us with subject: <b>Account Deletion</b>.
-              Include your registered email/phone and your user id (if available).
-            </p>
-            <a href="mailto:support@yeriho.app?subject=Account%20Deletion%20Request" aria-label="Email deletion request">Email deletion request →</a>
-          </div>
+          <div class="acc-panel" id="accPanel" role="region" aria-label="Useful links panel">
+            <div class="acc-body">
+              <div class="linkgrid">
+                <div class="linkcard">
+                  <b>Privacy Policy</b>
+                  <p style="margin:0; color:var(--muted); font-size:12.9px; font-weight:650;">
+                    Read how data is handled in Yeriho.
+                  </p>
+                  <a href="privacy.html">Open Privacy Policy →</a>
+                </div>
 
-          <div class="card">
-            <b>What gets deleted</b>
-            <p>
-              We process deletion requests according to our policy. If you need partial deletion or data export,
-              mention it clearly in your request.
-            </p>
-            <a href="#legal" aria-label="Go to legal section">Read privacy policy →</a>
-          </div>
-        </div>
-      </div>
-    </section>
+                <div class="linkcard">
+                  <b>Terms & Conditions</b>
+                  <p style="margin:0; color:var(--muted); font-size:12.9px; font-weight:650;">
+                    Terms of Service for using Yeriho.
+                  </p>
+                  <a href="terms.html">Open Terms →</a>
+                </div>
 
-    <section id="legal" class="section">
-      <div class="wrap">
-        <div class="section-title">
-          <h3>Legal</h3>
-          <p>Privacy policy and terms.</p>
-        </div>
+                <div class="linkcard">
+                  <b>Account Deletion</b>
+                  <p style="margin:0; color:var(--muted); font-size:12.9px; font-weight:650;">
+                    Apply for deletion of your account and related data. Processing time: 7–30 days.
+                  </p>
+                  <a href="delete.html">Open Account Deletion →</a>
+                </div>
 
-        <div class="grid3">
-          <div class="card">
-            <b>Privacy Policy</b>
-            <p>Explain what data is collected, why it’s collected, and how users can request deletion.</p>
-            <a href="privacy.html">Open Privacy Policy →</a>
-          </div>
+                <div class="linkcard">
+                  <b>Support Email</b>
+                  <p style="margin:0; color:var(--muted); font-size:12.9px; font-weight:650;">
+                    Primary support method (email).
+                  </p>
+                  <a href="mailto:support@yeriho.com?subject=Yeriho%20Support%20Request">support@yeriho.com →</a>
+                </div>
+              </div>
 
-          <div class="card">
-            <b>Terms & Conditions</b>
-            <p>General terms for use of the application and services.</p>
-            <a href="terms.html">Open Terms →</a>
-          </div>
+              <div style="height:12px"></div>
+              <div class="linkcard">
+                <b>Download links</b>
+                <p style="margin:0; color:var(--muted); font-size:12.9px; font-weight:650;">
+                  Download buttons are placeholders for now. We will update them when the Play Store / App Store links are ready.
+                </p>
+              </div>
 
-          <div class="card">
-            <b>Support policy</b>
-            <p>How we handle support requests and what information is required to help you quickly.</p>
-            <a href="#help">Go to support →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -539,18 +740,64 @@
           </div>
 
           <div class="foot-links" aria-label="Footer links">
-            <a href="#help">Support</a>
-            <a href="#deletion">Account deletion</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#support">Support</a>
+            <a href="#links">Useful Links</a>
           </div>
         </div>
       </div>
     </footer>
   </main>
 
+  <div class="toast" id="toast"></div>
+
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Toast helper
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // Download placeholders
+    document.querySelectorAll('[data-coming-soon]').forEach(btn => {
+      btn.addEventListener('click', () => showToast(btn.getAttribute('data-coming-soon')));
+    });
+
+    // Accordion
+    const acc = document.getElementById('usefulAccordion');
+    const accBtn = acc.querySelector('.acc-btn');
+    const accPanel = acc.querySelector('.acc-panel');
+
+    function setAccordion(open) {
+      accBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      acc.classList.toggle('acc-open', open);
+      if (open) {
+        accPanel.style.maxHeight = accPanel.scrollHeight + 'px';
+      } else {
+        accPanel.style.maxHeight = '0px';
+      }
+    }
+
+    // default closed
+    setAccordion(false);
+
+    accBtn.addEventListener('click', () => {
+      const isOpen = accBtn.getAttribute('aria-expanded') === 'true';
+      setAccordion(!isOpen);
+    });
+
+    window.addEventListener('resize', () => {
+      const isOpen = accBtn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) accPanel.style.maxHeight = accPanel.scrollHeight + 'px';
+    });
   </script>
 </body>
 </html>

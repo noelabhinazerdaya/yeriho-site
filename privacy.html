@@ -11,6 +11,7 @@
     :root{
       --bgA:#0F172A;
       --bgB:#1F2937;
+
       --panel:#0F1623;
       --cardA:#101826;
       --cardB:#0B1422;
@@ -98,7 +99,7 @@
 
     /* Page header */
     .hero{
-      padding:28px 0 10px;
+      padding:28px 0 12px;
     }
     .hero-card{
       border-radius: var(--radius);
@@ -117,6 +118,7 @@
       pointer-events:none;
     }
     .hero-inner{ position:relative; padding:20px; }
+
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
       font-size:12px; font-weight:900; letter-spacing:.35px;
@@ -142,51 +144,14 @@
       color: var(--muted);
       font-size:13.8px;
       font-weight:650;
-      max-width: 70ch;
+      max-width: 72ch;
     }
+    .sub a{ text-decoration:underline; text-underline-offset:3px; }
 
-    /* Content layout */
+    /* Main content */
     .content{
-      padding:16px 0 34px;
+      padding:10px 0 34px;
     }
-    .grid{
-      display:grid;
-      grid-template-columns: 300px 1fr;
-      gap:14px;
-      align-items:start;
-    }
-
-    .side{
-      position:sticky;
-      top:86px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(16,24,38,.70) 0%, rgba(11,20,34,.70) 100%);
-      border:1px solid rgba(35,48,68,.85);
-      box-shadow: var(--shadow);
-      padding:14px;
-    }
-    .side h3{
-      margin:0 0 10px;
-      font-size:13.6px;
-      font-weight:950;
-      letter-spacing:.2px;
-    }
-    .toc{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
-    .toc a{
-      display:block;
-      padding:10px 10px;
-      border-radius: 14px;
-      border:1px solid rgba(229,231,235,.10);
-      background: rgba(15,22,35,.45);
-      font-size:12.8px;
-      font-weight:850;
-      color: var(--text);
-    }
-    .toc a:hover{
-      border-color: rgba(152,132,255,.35);
-      background: rgba(15,22,35,.70);
-    }
-
     .main{
       border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(16,24,38,.68) 0%, rgba(11,20,34,.68) 100%);
@@ -194,32 +159,7 @@
       box-shadow: var(--shadow);
       padding:18px;
     }
-    .block{
-      padding:14px;
-      border-radius: 16px;
-      border:1px solid rgba(229,231,235,.10);
-      background: rgba(15,22,35,.45);
-      margin: 0 0 12px;
-    }
-    .block h4{
-      margin:0 0 8px;
-      font-size:14px;
-      font-weight:950;
-      letter-spacing:.2px;
-    }
-    .block p{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 13.3px;
-      font-weight:650;
-    }
-    .block p:last-child{ margin-bottom:0; }
-    .block ul{
-      margin:8px 0 0 18px;
-      color: var(--muted);
-      font-size: 13.2px;
-      font-weight:650;
-    }
+
     .note{
       display:flex; gap:10px; align-items:flex-start;
       padding:12px;
@@ -249,6 +189,62 @@
       flex: 0 0 auto;
     }
 
+    .block{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+      margin: 0 0 12px;
+    }
+    .block h3{
+      margin:0 0 8px;
+      font-size:14.2px;
+      font-weight:950;
+      letter-spacing:.2px;
+    }
+    .block p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13.3px;
+      font-weight:650;
+    }
+    .block p:last-child{ margin-bottom:0; }
+    .block ul{
+      margin:8px 0 0 18px;
+      color: var(--muted);
+      font-size: 13.2px;
+      font-weight:650;
+    }
+
+    .callout{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid rgba(16,185,129,.25);
+      background: rgba(16,185,129,.08);
+      margin: 0 0 12px;
+    }
+    .callout .ico{
+      width:34px; height:34px; border-radius: 12px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(16,185,129,.12);
+      flex: 0 0 auto;
+    }
+    .callout b{
+      display:block;
+      font-weight:950;
+      font-size:13.2px;
+      margin-bottom:4px;
+      color: var(--text);
+    }
+    .callout span{
+      display:block;
+      color: var(--muted);
+      font-size: 13.1px;
+      font-weight:650;
+    }
+
     footer{
       border-top:1px solid rgba(35,48,68,.75);
       padding:18px 0 28px;
@@ -273,11 +269,12 @@
       font-size:12px;
     }
 
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-      .side{ position:relative; top:auto; }
-      h2{ font-size:26px; }
+    @media (max-width: 740px){
       .brand{ min-width:auto; }
+      h2{ font-size:26px; }
+      .hero-inner{ padding:18px; }
+      .main{ padding:14px; }
+      .block{ padding:13px; }
     }
   </style>
 </head>
@@ -297,8 +294,8 @@
         <nav class="nav" aria-label="Main navigation">
           <a class="pill" href="index.html">Home</a>
           <a class="pill" href="terms.html">Terms</a>
-          <a class="pill" href="index.html#help">Support</a>
-          <a class="pill primary" href="index.html#deletion">Account deletion</a>
+          <a class="pill" href="index.html#support">Support</a>
+          <a class="pill primary" href="delete.html">Account deletion</a>
         </nav>
       </div>
     </div>
@@ -312,8 +309,8 @@
             <div class="kicker"><span class="dot"></span> Effective date: <span id="effectiveDate">2026-01-11</span></div>
             <h2>Privacy Policy</h2>
             <p class="sub">
-              This Privacy Policy explains how Yeriho collects, uses, and protects information.
-              If you have questions, contact <a href="mailto:support@yeriho.app" style="text-decoration:underline">support@yeriho.app</a>.
+              This page explains how Yeriho collects, uses, and protects information.
+              For questions, contact <a href="mailto:support@yeriho.app">support@yeriho.app</a>.
             </p>
           </div>
         </div>
@@ -322,147 +319,130 @@
 
     <section class="content">
       <div class="wrap">
-        <div class="grid">
+        <div class="main">
 
-          <!-- TOC -->
-          <aside class="side" aria-label="Table of contents">
-            <h3>On this page</h3>
-            <ul class="toc">
-              <li><a href="#summary">Summary</a></li>
-              <li><a href="#info">Information we collect</a></li>
-              <li><a href="#use">How we use information</a></li>
-              <li><a href="#sharing">Sharing</a></li>
-              <li><a href="#storage">Storage & security</a></li>
-              <li><a href="#retention">Retention</a></li>
-              <li><a href="#rights">Your choices & rights</a></li>
-              <li><a href="#children">Children</a></li>
-              <li><a href="#changes">Changes</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </aside>
-
-          <!-- Main -->
-          <div class="main">
-            <div class="note" id="summary">
-              <div class="ico" aria-hidden="true">🔒</div>
-              <div>
-                <b>Quick summary</b>
-                <span>
-                  Yeriho may collect basic account/support information, app diagnostics, and content you choose to create or upload.
-                  We use it to provide the app, improve reliability, and respond to support requests.
-                  You can request account deletion anytime.
-                </span>
-              </div>
+          <div class="note">
+            <div class="ico" aria-hidden="true">🔒</div>
+            <div>
+              <b>Quick summary</b>
+              <span>
+                Yeriho may collect basic account/support information, app diagnostics, and content you choose to create or upload.
+                We use it to provide the app, improve reliability, and respond to support requests.
+                You can request account deletion anytime.
+              </span>
             </div>
-
-            <div class="block" id="info">
-              <h4>1) Information we collect</h4>
-              <p>Depending on how you use Yeriho, we may collect:</p>
-              <ul>
-                <li><b>Account information</b> (e.g., email/phone if you sign in, and identifiers needed to operate the app).</li>
-                <li><b>Support information</b> (messages, attachments, and contact details you send to support).</li>
-                <li><b>User content</b> you create or upload in the app (for example notes, images, files, or other content depending on features you use).</li>
-                <li><b>Device & diagnostics</b> (crash reports, performance data, device model/OS version, app version, and similar technical data).</li>
-                <li><b>Usage data</b> (feature interactions and basic analytics, if enabled in the app build).</li>
-              </ul>
-              <p>
-                We do not sell your personal information.
-              </p>
-            </div>
-
-            <div class="block" id="use">
-              <h4>2) How we use information</h4>
-              <p>We use collected information to:</p>
-              <ul>
-                <li>Provide and maintain the app and its features.</li>
-                <li>Authenticate users (if sign-in is used).</li>
-                <li>Store and sync user content (when cloud features are used).</li>
-                <li>Detect, prevent, and fix bugs, crashes, and security issues.</li>
-                <li>Respond to support requests and communicate important updates.</li>
-                <li>Comply with legal obligations and enforce our terms.</li>
-              </ul>
-            </div>
-
-            <div class="block" id="sharing">
-              <h4>3) Sharing</h4>
-              <p>We may share information only in these cases:</p>
-              <ul>
-                <li><b>Service providers</b> (e.g., hosting, analytics, crash reporting, email/support tooling) who process data for us.</li>
-                <li><b>Legal reasons</b> if required by law or to protect rights and safety.</li>
-                <li><b>Business transfers</b> if the app is involved in a merger, acquisition, or sale (you’ll be notified if required).</li>
-              </ul>
-              <p>
-                We do not share your personal information for advertising sale purposes.
-              </p>
-            </div>
-
-            <div class="block" id="storage">
-              <h4>4) Storage & security</h4>
-              <p>
-                We use reasonable administrative and technical safeguards to protect information.
-                However, no method of transmission or storage is 100% secure.
-              </p>
-              <p>
-                Your device may also store some data locally (e.g., cached content) depending on app features and settings.
-              </p>
-            </div>
-
-            <div class="block" id="retention">
-              <h4>5) Retention</h4>
-              <p>
-                We retain information only as long as needed to provide the app, comply with legal obligations,
-                resolve disputes, and enforce agreements.
-              </p>
-              <p>
-                You can request deletion; see the “Your choices & rights” section below.
-              </p>
-            </div>
-
-            <div class="block" id="rights">
-              <h4>6) Your choices & rights</h4>
-              <p>You may have rights depending on your location, including:</p>
-              <ul>
-                <li>Request access to or correction of your information.</li>
-                <li>Request deletion of your account and associated data.</li>
-                <li>Opt out of certain analytics (if the app provides such controls).</li>
-              </ul>
-              <p>
-                To request account deletion, use the deletion form linked on the Home page, or email
-                <a href="mailto:support@yeriho.app?subject=Account%20Deletion%20Request" style="text-decoration:underline">support@yeriho.app</a>
-                with subject “Account Deletion Request”.
-              </p>
-            </div>
-
-            <div class="block" id="children">
-              <h4>7) Children</h4>
-              <p>
-                Yeriho is not intended for children under the age required by local law for consent.
-                If you believe a child provided personal information, contact us to request deletion.
-              </p>
-            </div>
-
-            <div class="block" id="changes">
-              <h4>8) Changes to this policy</h4>
-              <p>
-                We may update this Privacy Policy from time to time. The “Effective date” above will be updated.
-                Continued use of the app after changes means you accept the updated policy.
-              </p>
-            </div>
-
-            <div class="block" id="contact">
-              <h4>9) Contact</h4>
-              <p>
-                If you have questions about this Privacy Policy or data handling, contact:
-              </p>
-              <p>
-                <b>Email:</b> <a href="mailto:support@yeriho.app" style="text-decoration:underline">support@yeriho.app</a>
-              </p>
-              <p style="margin-bottom:0">
-                <b>Website:</b> <a href="index.html" style="text-decoration:underline">Yeriho Home</a>
-              </p>
-            </div>
-
           </div>
+
+          <div class="block">
+            <h3>1) Information we collect</h3>
+            <p>Depending on how you use Yeriho, we may collect:</p>
+            <ul>
+              <li><b>Account information</b> (e.g., email/phone if you sign in, and identifiers needed to operate the app).</li>
+              <li><b>Support information</b> (messages, attachments, and contact details you send to support).</li>
+              <li><b>User content</b> you create or upload in the app (for example notes, images, files, or other content depending on features you use).</li>
+              <li><b>Device & diagnostics</b> (crash reports, performance data, device model/OS version, app version, and similar technical data).</li>
+              <li><b>Usage data</b> (feature interactions and basic analytics, if enabled in the app build).</li>
+            </ul>
+            <p>We do not sell your personal information.</p>
+          </div>
+
+          <div class="block">
+            <h3>2) How we use information</h3>
+            <p>We use collected information to:</p>
+            <ul>
+              <li>Provide and maintain the app and its features.</li>
+              <li>Authenticate users (if sign-in is used).</li>
+              <li>Store and sync user content (when cloud features are used).</li>
+              <li>Detect, prevent, and fix bugs, crashes, and security issues.</li>
+              <li>Respond to support requests and communicate important updates.</li>
+              <li>Comply with legal obligations and enforce our terms.</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>3) Sharing</h3>
+            <p>We may share information only in these cases:</p>
+            <ul>
+              <li><b>Service providers</b> (e.g., hosting, analytics, crash reporting, email/support tooling) who process data for us.</li>
+              <li><b>Legal reasons</b> if required by law or to protect rights and safety.</li>
+              <li><b>Business transfers</b> if the app is involved in a merger, acquisition, or sale (you’ll be notified if required).</li>
+            </ul>
+            <p>We do not share your personal information for advertising sale purposes.</p>
+          </div>
+
+          <div class="block">
+            <h3>4) Storage & security</h3>
+            <p>
+              We use reasonable administrative and technical safeguards to protect information.
+              However, no method of transmission or storage is 100% secure.
+            </p>
+            <p>
+              Your device may also store some data locally (e.g., cached content) depending on app features and settings.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3>5) Retention</h3>
+            <p>
+              We retain information only as long as needed to provide the app, comply with legal obligations,
+              resolve disputes, and enforce agreements.
+            </p>
+            <p>
+              You can request deletion using the account deletion page, or by emailing
+              <a href="mailto:support@yeriho.app?subject=Account%20Deletion%20Request" style="text-decoration:underline; text-underline-offset:3px;">support@yeriho.app</a>.
+            </p>
+          </div>
+
+          <div class="callout">
+            <div class="ico" aria-hidden="true">✅</div>
+            <div>
+              <b>Support note</b>
+              <span>
+                Email is the official support channel. If in-app support is available in your app version,
+                replies there may be faster and easier.
+              </span>
+            </div>
+          </div>
+
+          <div class="block">
+            <h3>6) Your choices & rights</h3>
+            <p>You may have rights depending on your location, including:</p>
+            <ul>
+              <li>Request access to or correction of your information.</li>
+              <li>Request deletion of your account and associated data.</li>
+              <li>Opt out of certain analytics (if the app provides such controls).</li>
+            </ul>
+            <p>
+              To request account deletion, use <a href="delete.html" style="text-decoration:underline; text-underline-offset:3px;">Account deletion</a>.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3>7) Children</h3>
+            <p>
+              Yeriho is not intended for children under the age required by local law for consent.
+              If you believe a child provided personal information, contact support to request deletion.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3>8) Changes to this policy</h3>
+            <p>
+              We may update this Privacy Policy from time to time. The “Effective date” above will be updated.
+              Continued use of the app after changes means you accept the updated policy.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3>9) Contact</h3>
+            <p>
+              If you have questions about this Privacy Policy or data handling, contact:
+            </p>
+            <p style="margin-bottom:0">
+              <b>Email:</b> <a href="mailto:support@yeriho.app" style="text-decoration:underline; text-underline-offset:3px;">support@yeriho.app</a>
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -478,8 +458,8 @@
           <div class="foot-links" aria-label="Footer links">
             <a href="index.html">Home</a>
             <a href="terms.html">Terms</a>
-            <a href="index.html#help">Support</a>
-            <a href="index.html#deletion">Account deletion</a>
+            <a href="index.html#support">Support</a>
+            <a href="delete.html">Account deletion</a>
           </div>
         </div>
       </div>

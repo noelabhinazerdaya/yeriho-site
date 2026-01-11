@@ -3,400 +3,677 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Yeriho account deletion request page. Submit the request form to delete your account and related data." />
+  <meta name="description" content="Request deletion of your Yeriho account and associated data. Read important warnings and submit the official request form." />
+  <meta name="theme-color" content="#0F172A" />
   <title>Yeriho — Account Deletion</title>
 
   <style>
     :root{
-      --bg:#0b1220;
-      --bg2:#0f172a;
-      --card:#0f1623;
+      --bgA:#0F172A;
+      --bgB:#070B14;
+
+      --panel:#0F1623;
+      --cardA:#101826;
+      --cardB:#0B1422;
       --stroke:#233044;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --brand:#9884ff;
-      --ok:#10b981;
-      --danger:#ef4444;
+
+      --text:#E5E7EB;
+      --muted:#9CA3AF;
+
+      --accent:#9884FF;
+      --accent2:#60A5FA;
+      --ok:#10B981;
+      --danger:#EF4444;
+
       --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1100px;
+      --radius: 18px;
+      --max: 980px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(152,132,255,.20), transparent 60%),
-        radial-gradient(900px 500px at 90% 30%, rgba(16,185,129,.14), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, #070b14 100%);
-      line-height:1.55;
+        radial-gradient(1000px 520px at 18% 10%, rgba(152,132,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 30%, rgba(96,165,250,.12), transparent 60%),
+        linear-gradient(180deg, var(--bgA) 0%, var(--bgB) 100%);
+      line-height:1.7;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    a{ color:inherit; text-decoration:none }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 16px; }
+
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(15,23,42,.90), rgba(15,23,42,.65));
-      border-bottom: 1px solid rgba(35,48,68,.55);
+      background: linear-gradient(180deg, rgba(15,23,42,.92) 0%, rgba(15,22,35,.62) 100%);
+      border-bottom: 1px solid rgba(35,48,68,.65);
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+      padding:12px 0;
       gap:12px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      text-decoration:none;
+      min-width: 180px;
     }
     .logo{
-      width:38px; height:38px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(152,132,255,.35), rgba(152,132,255,.10));
-      border:1px solid rgba(152,132,255,.35);
-      box-shadow: var(--shadow);
-      display:grid; place-items:center;
-      font-weight:900;
-      letter-spacing:.3px;
+      width:36px; height:36px; border-radius:12px;
+      background:
+        radial-gradient(10px 10px at 30% 35%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(135deg, rgba(152,132,255,.95) 0%, rgba(96,165,250,.85) 100%);
+      box-shadow: 0 10px 18px rgba(152,132,255,.18);
+      border: 1px solid rgba(255,255,255,.16);
+      flex:0 0 auto;
     }
-    .brand-title{
-      display:flex; flex-direction:column; gap:2px;
-    }
-    .brand-title b{font-size:14.5px; letter-spacing:.2px}
-    .brand-title span{font-size:12px; color:var(--muted)}
+    .brand h1{ font-size:15px; margin:0; font-weight:900; letter-spacing:.2px; }
+    .brand p{ margin:0; font-size:12px; color:var(--muted); font-weight:650; }
+
     .nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+      display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .nav a{
-      text-decoration:none;
-      font-size:12.8px;
-      color:var(--text);
-      padding:8px 10px;
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 11px;
+      border-radius:999px;
       border:1px solid rgba(229,231,235,.12);
-      border-radius:12px;
-      background: rgba(255,255,255,.04);
+      background: rgba(15,22,35,.55);
+      color: var(--text);
+      font-size:12.3px;
+      font-weight:850;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+      white-space:nowrap;
     }
-    .nav a:hover{border-color: rgba(152,132,255,.35)}
-    .hero{
-      padding:28px 0 18px;
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(152,132,255,.35);
+      background: rgba(15,22,35,.75);
     }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.4fr .9fr;
-      gap:16px;
-      align-items:stretch;
+    .pill.primary{
+      background: linear-gradient(135deg, rgba(152,132,255,.95) 0%, rgba(96,165,250,.75) 100%);
+      border-color: rgba(255,255,255,.18);
+      color:#081023;
     }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns:1fr}
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(15,22,35,.92), rgba(11,18,32,.92));
-      border:1px solid rgba(35,48,68,.85);
+
+    /* Hero */
+    .hero{ padding:18px 0 10px; }
+    .heroCard{
       border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,24,38,.82) 0%, rgba(11,20,34,.82) 100%);
+      border:1px solid rgba(35,48,68,.85);
       box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
-    .card-pad{padding:18px}
-    h1{
-      margin:0 0 8px;
-      font-size:22px;
-      letter-spacing:.2px;
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(760px 260px at 18% 0%, rgba(152,132,255,.16), transparent 60%),
+        radial-gradient(760px 260px at 86% 10%, rgba(96,165,250,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .heroInner{ position:relative; padding:18px; }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; font-weight:900;
+      letter-spacing:.35px;
+      color: rgba(229,231,235,.92);
+      background: rgba(15,22,35,.55);
+      border:1px solid rgba(35,48,68,.75);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--danger);
+      box-shadow: 0 0 0 4px rgba(239,68,68,.14);
+    }
+    h2{
+      margin:10px 0 6px;
+      font-size:24px;
+      line-height:1.18;
+      letter-spacing:-.2px;
+      font-weight:950;
     }
     .sub{
       margin:0;
-      color:var(--muted);
-      font-size:13.5px;
+      color: var(--muted);
+      font-size:13.4px;
+      font-weight:650;
+      max-width: 92ch;
     }
-    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .pill{
+    .chips{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .chip{
       display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
+      padding:7px 10px;
       border-radius:999px;
-      font-size:12.6px;
-      border:1px solid rgba(229,231,235,.12);
-      background: rgba(255,255,255,.03);
-      color:var(--text);
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+      color: rgba(229,231,235,.95);
+      font-weight:850;
+      font-size:12.1px;
+      white-space:nowrap;
     }
-    .dot{
-      width:8px; height:8px; border-radius:99px; background: var(--brand);
+    .chip .tinyDot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--accent);
       box-shadow: 0 0 0 4px rgba(152,132,255,.12);
     }
-    .dot.ok{background: var(--ok); box-shadow: 0 0 0 4px rgba(16,185,129,.12);}
-    .dot.danger{background: var(--danger); box-shadow: 0 0 0 4px rgba(239,68,68,.12);}
+    .chip .tinyDot.ok{ background: var(--ok); box-shadow: 0 0 0 4px rgba(16,185,129,.12); }
+    .chip .tinyDot.danger{ background: var(--danger); box-shadow: 0 0 0 4px rgba(239,68,68,.12); }
+
+    /* Main */
+    .main{ padding:12px 0 34px; }
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,24,38,.70) 0%, rgba(11,20,34,.70) 100%);
+      border:1px solid rgba(35,48,68,.85);
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
     .section{
-      padding:12px 0 28px;
-    }
-    h2{
-      margin:0 0 10px;
-      font-size:15.5px;
-      letter-spacing:.2px;
-    }
-    .steps{
-      display:grid;
-      gap:10px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-    .step{
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px;
-      border-radius:14px;
+      padding:14px;
+      border-radius: var(--radius);
       border:1px solid rgba(229,231,235,.10);
-      background: rgba(255,255,255,.03);
+      background: rgba(15,22,35,.42);
+      margin-bottom:12px;
     }
-    .num{
-      width:28px; height:28px; flex:0 0 28px;
-      border-radius:10px;
-      display:grid; place-items:center;
-      background: rgba(152,132,255,.12);
-      border:1px solid rgba(152,132,255,.25);
-      color:var(--text);
-      font-weight:800;
-      font-size:13px;
+    .section h3{
+      margin:0 0 8px;
+      font-size:15px;
+      font-weight:950;
+      letter-spacing:.15px;
     }
-    .step b{display:block; font-size:13.4px; margin-bottom:3px}
-    .step p{margin:0; color:var(--muted); font-size:13px}
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      border-radius:14px;
-      padding:12px 14px;
-      text-decoration:none;
-      border:1px solid rgba(229,231,235,.14);
-      background: rgba(255,255,255,.04);
-      font-weight:800;
+    .section p{
+      margin:0;
+      color: var(--muted);
       font-size:13.2px;
+      font-weight:650;
     }
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(152,132,255,.95), rgba(152,132,255,.55));
-      border-color: rgba(152,132,255,.45);
-      color:#0b1020;
-    }
-    .btn-primary:hover{filter: brightness(1.03)}
-    .btn-ghost:hover{border-color: rgba(152,132,255,.35)}
-    .note{
+
+    .callout{
       margin-top:12px;
       padding:12px;
-      border-radius:14px;
-      border:1px dashed rgba(229,231,235,.18);
-      background: rgba(255,255,255,.02);
-      color: var(--muted);
-      font-size:12.8px;
+      border-radius: 16px;
+      border:1px solid rgba(239,68,68,.22);
+      background: rgba(239,68,68,.07);
+      color: rgba(229,231,235,.92);
     }
+    .callout b{ display:block; margin-bottom:6px; font-weight:950; }
+    .callout p{ margin:0; color: var(--muted); font-weight:650; font-size:13px; }
+
+    .bullets{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size:13.2px;
+      font-weight:650;
+    }
+    .bullets li{ margin: 6px 0; }
+
     .grid2{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:14px;
+      gap:12px;
+      margin-top:12px;
     }
-    @media (max-width: 900px){
-      .grid2{grid-template-columns:1fr}
+    @media (max-width: 860px){
+      .grid2{ grid-template-columns: 1fr; }
     }
+
     .mini{
       padding:14px;
-      border-radius:14px;
+      border-radius: 16px;
       border:1px solid rgba(229,231,235,.10);
-      background: rgba(255,255,255,.03);
+      background: rgba(15,22,35,.45);
     }
-    .mini h3{
-      margin:0 0 6px;
-      font-size:13.5px;
-    }
-    .mini p{
-      margin:0;
-      color:var(--muted);
-      font-size:12.9px;
-    }
-    .footer{
-      border-top:1px solid rgba(35,48,68,.65);
-      margin-top:26px;
-      padding:18px 0 26px;
-      color:var(--muted);
-      font-size:12.6px;
-    }
-    .foot-row{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    .mini b{ display:block; margin-bottom:6px; font-size:13.2px; font-weight:950; }
+    .mini p{ margin:0; color: var(--muted); font-size:12.9px; font-weight:650; }
+
+    .ctaRow{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
       align-items:center;
     }
-    .foot-links a{
-      margin-right:12px;
-      text-decoration:none;
-      border-bottom:1px dotted rgba(229,231,235,.25);
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 12px;
+      border-radius: 14px;
+      font-weight:900;
+      font-size:12.9px;
+      border:1px solid rgba(229,231,235,.12);
+      background: rgba(15,22,35,.55);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      cursor:pointer;
+      width: 100%;
     }
-    .foot-links a:hover{border-bottom-color: rgba(152,132,255,.6)}
-    code{
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(152,132,255,.35);
+      background: rgba(15,22,35,.78);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(152,132,255,.95) 0%, rgba(96,165,250,.75) 100%);
+      border-color: rgba(255,255,255,.18);
+      color:#081023;
+    }
+    .btn.danger{
+      background: linear-gradient(135deg, rgba(239,68,68,.90) 0%, rgba(239,68,68,.55) 100%);
+      border-color: rgba(255,255,255,.18);
+      color:#12070a;
+    }
+    @media (min-width: 520px){
+      .btn{ width:auto; }
+    }
+
+    .linkBox{
+      padding:12px;
+      border-radius: 16px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+    }
+    .mono{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12.4px;
+      font-size: 12.2px;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(35,48,68,.75);
+      padding:18px 0 28px;
+      color: var(--muted);
+      font-size:12.4px;
+      font-weight:650;
+    }
+    .footRow{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .footLinks{ display:flex; gap:10px; flex-wrap:wrap; }
+    .footLinks a{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
       color: var(--text);
-      background: rgba(0,0,0,.25);
-      border: 1px solid rgba(229,231,235,.10);
-      padding: 2px 6px;
-      border-radius: 10px;
+      font-weight:900;
+      font-size:12px;
+    }
+
+    /* Modal */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:999;
+    }
+    .modalBack.show{ display:flex; }
+    .modal{
+      width: min(560px, 100%);
+      border-radius: 18px;
+      border:1px solid rgba(35,48,68,.85);
+      background: linear-gradient(180deg, rgba(16,24,38,.95) 0%, rgba(11,20,34,.95) 100%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding:14px 14px 12px;
+      border-bottom:1px solid rgba(35,48,68,.75);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .modalHead b{ font-size:14px; font-weight:950; letter-spacing:.2px; }
+    .modalHead span{
+      display:block;
+      color: var(--muted);
+      font-size:12.7px;
+      font-weight:650;
+      margin-top:4px;
+      line-height:1.45;
+    }
+    .xBtn{
+      width:38px; height:38px;
+      border-radius:12px;
+      border:1px solid rgba(229,231,235,.12);
+      background: rgba(15,22,35,.55);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:950;
+    }
+    .xBtn:hover{ border-color: rgba(152,132,255,.35); background: rgba(15,22,35,.78); }
+
+    .modalBody{ padding:14px; }
+    .warn{
+      border-radius: 16px;
+      border:1px solid rgba(239,68,68,.22);
+      background: rgba(239,68,68,.07);
+      padding:12px;
+      margin-bottom:12px;
+    }
+    .warn b{ display:block; margin-bottom:6px; font-weight:950; }
+    .warn p{ margin:0; color: var(--muted); font-weight:650; font-size:12.9px; }
+
+    .checks{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+    .chk{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px;
+      border-radius: 16px;
+      border:1px solid rgba(229,231,235,.10);
+      background: rgba(15,22,35,.45);
+    }
+    .chk input{ margin-top:3px; width:18px; height:18px; accent-color: var(--danger); }
+    .chk b{ display:block; font-size:12.8px; font-weight:950; margin-bottom:2px; }
+    .chk span{ display:block; color: var(--muted); font-size:12.6px; font-weight:650; line-height:1.4; }
+
+    .modalFoot{
+      padding:12px 14px 14px;
+      border-top:1px solid rgba(35,48,68,.75);
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; align-items:center;
+    }
+    .btn[disabled]{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none !important;
+    }
+
+    /* Small phones */
+    @media (max-width: 360px){
+      .pill{ padding:7px 10px; font-size:12px; }
+      h2{ font-size:22px; }
+      .heroInner{ padding:14px; }
+      .panel{ padding:12px; }
+      .section{ padding:12px; }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
+  <div class="topbar">
     <div class="wrap">
       <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Yeriho Home">
-          <div class="logo">Y</div>
-          <div class="brand-title">
-            <b>Yeriho</b>
-            <span>Account Deletion</span>
+        <div class="brand" aria-label="Yeriho">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Yeriho</h1>
+            <p>Account Deletion</p>
           </div>
-        </a>
-        <nav class="nav" aria-label="Top navigation">
-          <a href="index.html">Home</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="index.html#help">Support</a>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a class="pill" href="index.html">Home</a>
+          <a class="pill" href="privacy.html">Privacy</a>
+          <a class="pill primary" href="#support">Support</a>
         </nav>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="wrap">
+  <main>
     <section class="hero">
-      <div class="hero-grid">
-        <div class="card">
-          <div class="card-pad">
-            <h1>Request Account Deletion</h1>
+      <div class="wrap">
+        <div class="heroCard">
+          <div class="heroInner">
+            <div class="kicker"><span class="dot"></span> Account Deletion Request</div>
+            <h2>Delete your account and associated data</h2>
             <p class="sub">
-              Use this page to request deletion of your Yeriho account. You must submit the deletion request form.
-              After your request is verified, deletion is processed within <b>7–30 days</b>.
+              To delete your Yeriho account, you must submit the official deletion request form.
+              Please read the warning and steps below before continuing.
             </p>
 
-            <div class="pill-row" role="list">
-              <div class="pill" role="listitem"><span class="dot"></span> Form required</div>
-              <div class="pill" role="listitem"><span class="dot ok"></span> Confirmation email after deletion</div>
-              <div class="pill" role="listitem"><span class="dot danger"></span> Form can be submitted only once</div>
-            </div>
-
-            <div class="cta">
-              <!-- Replace the # with your Google Form link later -->
-              <a class="btn btn-primary" id="applyBtn" href="#" target="_blank" rel="noopener">
-                Apply for Deletion
-              </a>
-              <a class="btn btn-ghost" href="index.html#help">Contact Support</a>
-            </div>
-
-            <div class="note">
-              <b>Important:</b> The deletion request form can be submitted only <b>one time</b>.
-              If you submitted it by mistake, please contact support using the email mentioned in the Support section.
+            <div class="chips">
+              <span class="chip"><span class="tinyDot danger"></span> Irreversible action</span>
+              <span class="chip"><span class="tinyDot"></span> Form submission required</span>
+              <span class="chip"><span class="tinyDot ok"></span> Processed within 7–30 days (after verification)</span>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-pad">
-            <h2>What happens after you submit?</h2>
-            <ul class="steps">
-              <li class="step">
-                <div class="num">1</div>
-                <div>
-                  <b>Fill the deletion request form</b>
-                  <p>Enter the correct details so we can locate and verify your account.</p>
-                </div>
-              </li>
-              <li class="step">
-                <div class="num">2</div>
-                <div>
-                  <b>We verify the request</b>
-                  <p>We may verify that the request belongs to the account owner.</p>
-                </div>
-              </li>
-              <li class="step">
-                <div class="num">3</div>
-                <div>
-                  <b>Deletion is processed (7–30 days)</b>
-                  <p>Once verified, the account deletion is completed within the stated timeline.</p>
-                </div>
-              </li>
-              <li class="step">
-                <div class="num">4</div>
-                <div>
-                  <b>Confirmation email</b>
-                  <p>After deletion is completed, you will receive a confirmation email.</p>
-                </div>
-              </li>
-            </ul>
+        <div class="main">
+          <div class="panel">
 
-            <div class="note" style="margin-top:14px">
-              If you do not see the form button working, it means the form link is not added yet.
-              We will update the button link later.
+            <div class="section" id="warning">
+              <h3>Important warning</h3>
+              <p>
+                Account deletion is a permanent request. After deletion, you may lose access to your saved content and app features.
+                Submit the form only if you are sure.
+              </p>
+
+              <div class="callout">
+                <b>Please read before submitting</b>
+                <p>
+                  Use the same email address that you used in the Yeriho app. Incorrect details may delay verification.
+                  Deletion requests cannot be undone.
+                </p>
+              </div>
             </div>
+
+            <div class="section" id="steps">
+              <h3>How to fill the deletion request form</h3>
+              <p>When the form opens, fill the following fields carefully:</p>
+
+              <ul class="bullets">
+                <li><b>Email Address *</b> — Enter the same email you used in the Yeriho app.</li>
+                <li><b>Reason for Deletion *</b> — This is required. Please write a short reason.</li>
+                <li><b>Confirmation *</b> — Tick the checkbox confirming you want deletion.</li>
+                <li><b>Submit</b> — Tap the Submit button to send your request.</li>
+              </ul>
+
+              <div class="grid2">
+                <div class="mini">
+                  <b>Use correct email</b>
+                  <p>Use the same email you used in the app. This helps us locate your account quickly.</p>
+                </div>
+                <div class="mini">
+                  <b>Reason is required</b>
+                  <p>Please provide a clear reason (example: “No longer using the app”). The form requires this field.</p>
+                </div>
+                <div class="mini">
+                  <b>Do not share passwords</b>
+                  <p>Never enter your password in the form or email. The request should not require passwords.</p>
+                </div>
+                <div class="mini">
+                  <b>Timeline</b>
+                  <p>After submission and verification, deletion is processed within 7–30 days.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="section" id="support">
+              <h3>Support</h3>
+              <p>
+                For faster and easier replies, please contact us from the app using <b>In-App Support</b>.
+                Email support is also available.
+              </p>
+
+              <div class="linkBox" style="margin-top:12px">
+                <b>In-App Support (Recommended)</b>
+                <p style="margin:0; color:var(--muted); font-weight:650; font-size:12.9px;">
+                  Open the app → Support → Create a ticket (replies are faster).
+                </p>
+
+                <div style="height:12px"></div>
+
+                <b>Email Support</b>
+                <div class="mono" style="color:var(--text); font-weight:900; margin-top:6px;">support@yeriho.com</div>
+
+                <div class="ctaRow" style="margin-top:12px">
+                  <a class="btn primary" href="mailto:support@yeriho.com?subject=Yeriho%20Account%20Deletion%20Help">Email Support</a>
+                  <a class="btn" href="index.html">Back to Home</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- FINAL CTA (LAST) -->
+            <div class="section" id="final">
+              <h3>Ready to submit the request?</h3>
+              <p>
+                If you have read the warning and steps above, you can proceed to the official deletion request form.
+                You will see a confirmation dialog first.
+              </p>
+
+              <div class="ctaRow" style="margin-top:12px">
+                <button class="btn danger" id="openFormBtn" type="button">Open Deletion Form</button>
+              </div>
+
+              <div class="callout" style="margin-top:12px">
+                <b>Reminder</b>
+                <p>
+                  Make sure you enter the correct email and a required reason for deletion.
+                  After submission, your request will be reviewed and processed after verification.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
+
       </div>
     </section>
 
-    <section class="section">
-      <div class="card">
-        <div class="card-pad">
-          <h2>Instructions to fill the request form</h2>
-
-          <div class="grid2">
-            <div class="mini">
-              <h3>Use the same account details</h3>
-              <p>
-                Provide the same details you used in the app (email/phone/user id, if asked).
-                Wrong details may delay verification.
-              </p>
-            </div>
-            <div class="mini">
-              <h3>Submit only once</h3>
-              <p>
-                The form can be submitted only <b>one time</b>. Please double-check before submitting.
-                If you submitted by mistake, contact support.
-              </p>
-            </div>
-            <div class="mini">
-              <h3>Timeline</h3>
-              <p>
-                Account deletion typically takes <b>7–30 days</b> after verification.
-                You’ll receive a confirmation email once completed.
-              </p>
-            </div>
-            <div class="mini">
-              <h3>Need help?</h3>
-              <p>
-                If you face issues, use the Support section on the Home page.
-                Keep your request details ready while contacting support.
-              </p>
-            </div>
-          </div>
-
-          <div class="note">
-            Tip: After we add the Google Form link, the <b>Apply for Deletion</b> button will open the form in a new tab.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="wrap" style="padding:0">
-        <div class="foot-row">
+    <footer>
+      <div class="wrap">
+        <div class="footRow">
           <div>
             <b style="color:var(--text)">Yeriho</b><br/>
             <span>© <span id="y"></span> Yeriho. All rights reserved.</span>
           </div>
-          <div class="foot-links" aria-label="Footer links">
+          <div class="footLinks" aria-label="Footer links">
             <a href="index.html">Home</a>
             <a href="privacy.html">Privacy</a>
-            <a href="index.html#help">Support</a>
+            <a href="#support">Support</a>
           </div>
         </div>
       </div>
     </footer>
   </main>
 
+  <!-- Confirmation Modal -->
+  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal">
+      <div class="modalHead">
+        <div>
+          <b id="modalTitle">Confirm before opening the deletion form</b>
+          <span id="modalDesc">
+            You will be redirected to Google Forms. Please confirm the warning below before continuing.
+          </span>
+        </div>
+        <button class="xBtn" type="button" id="closeModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="warn">
+          <b>Warning</b>
+          <p>
+            Account deletion is irreversible. Only continue if you are sure you want to delete your account and associated data.
+          </p>
+        </div>
+
+        <div class="checks">
+          <label class="chk">
+            <input type="checkbox" id="c1" />
+            <div>
+              <b>I understand this is a deletion request</b>
+              <span>Once submitted, the request will be processed after verification.</span>
+            </div>
+          </label>
+
+          <label class="chk">
+            <input type="checkbox" id="c2" />
+            <div>
+              <b>I will enter the correct email</b>
+              <span>I will use the same email that I used in the Yeriho app.</span>
+            </div>
+          </label>
+
+          <label class="chk">
+            <input type="checkbox" id="c3" />
+            <div>
+              <b>I will provide a reason for deletion</b>
+              <span>The form requires a reason (this field is mandatory).</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="modalFoot">
+        <button class="btn" type="button" id="cancelBtn">Cancel</button>
+        <button class="btn danger" type="button" id="continueBtn" disabled>Continue to Google Form</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Optional: Later when you have the Google Form link, replace this:
-    // document.getElementById('applyBtn').href = 'PASTE_YOUR_GOOGLE_FORM_LINK_HERE';
+    // Google Form URL (kept hidden from UI; only used for redirect)
+    const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdIvYsNS-OyNV7ctjU-uGYTA_XQc-P96ldTT_goLdYlygj8Iw/viewform?usp=dialog";
+
+    // Modal logic
+    const modalBack = document.getElementById('modalBack');
+    const openFormBtn = document.getElementById('openFormBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const continueBtn = document.getElementById('continueBtn');
+
+    const c1 = document.getElementById('c1');
+    const c2 = document.getElementById('c2');
+    const c3 = document.getElementById('c3');
+
+    function setContinueEnabled(){
+      const ok = c1.checked && c2.checked && c3.checked;
+      continueBtn.disabled = !ok;
+    }
+
+    [c1,c2,c3].forEach(x => x.addEventListener('change', setContinueEnabled));
+
+    function openModal(){
+      c1.checked = false; c2.checked = false; c3.checked = false;
+      continueBtn.disabled = true;
+      modalBack.classList.add('show');
+    }
+    function closeModal(){
+      modalBack.classList.remove('show');
+    }
+
+    openFormBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Close on backdrop click
+    modalBack.addEventListener('click', (e) => {
+      if (e.target === modalBack) closeModal();
+    });
+
+    // ESC to close
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalBack.classList.contains('show')) closeModal();
+    });
+
+    // Continue -> open form
+    continueBtn.addEventListener('click', () => {
+      window.open(FORM_URL, "_blank", "noopener");
+      closeModal();
+    });
   </script>
 </body>
 </html>

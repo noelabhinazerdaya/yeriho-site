@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Yeriho app — notes, music tools, and content utilities. Support, privacy policy, and account deletion." />
+  <title>Yeriho — Official Website</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f172a;
+      --card:#0f1623;
+      --stroke:#233044;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --brand:#9884ff;
+      --ok:#10b981;
+      --danger:#ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(152,132,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 30%, rgba(16,185,129,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #070b14 100%);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(90deg, rgba(15,23,42,.88), rgba(31,41,55,.88));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.3px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(152,132,255,1), rgba(16,185,129,1));
+      box-shadow: 0 10px 25px rgba(152,132,255,.18);
+    }
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      padding:9px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .nav a:hover{border-color: rgba(152,132,255,.55)}
+    .hero{
+      padding:44px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(16,24,38,.92), rgba(11,20,34,.92));
+      border:1px solid rgba(35,48,68,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:13px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:7px 10px; border-radius: 999px;
+      width:fit-content;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px; background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(16,185,129,.15);
+    }
+    h1{
+      margin:0;
+      font-size:44px;
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 600px){
+      h1{font-size:34px}
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size:16px;
+      max-width: 62ch;
+    }
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:6px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      min-width: 160px;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(152,132,255,1), rgba(106,92,255,1));
+      border-color: rgba(152,132,255,.55);
+    }
+    .btn-primary:hover{filter:brightness(1.03)}
+    .btn:hover{border-color: rgba(255,255,255,.18)}
+    .meta{
+      display:flex; flex-wrap:wrap; gap:12px;
+      color: var(--muted);
+      font-size:13px;
+      margin-top: 6px;
+    }
+    .meta span{
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+    .side-card{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .side-title{
+      font-size:16px;
+      font-weight:900;
+      margin:0;
+    }
+    .side-list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .side-list li{
+      padding:12px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      padding: 18px 0 8px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .feature{
+      padding:18px;
+      min-height: 132px;
+    }
+    .feature h3{
+      margin:0 0 6px 0;
+      font-size:16px;
+      font-weight:900;
+    }
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .section-title{
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.2px;
+      padding-top: 10px;
+    }
+    .section-sub{
+      margin:8px 0 0 0;
+      color: var(--muted);
+      font-size:14px;
+      max-width: 70ch;
+    }
+    .footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top: 26px;
+      padding: 18px 0 26px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer a{color: var(--text); text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    .split{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Yeriho home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>Yeriho</div>
+        </div>
+        <div class="nav" aria-label="Site navigation">
+          <a href="support.html">Support</a>
+          <a href="account-deletion.html">Account Deletion</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="card hero-card">
+          <div class="kicker"><span class="dot"></span> Official website • Yeriho App</div>
+          <h1>Simple. Powerful. Built for your daily workflow.</h1>
+          <p class="sub">
+            Yeriho is designed to help you manage content and tools in one place — with a clean experience,
+            fast performance, and reliable support.
+          </p>
+
+          <div class="cta-row">
+            <!-- Replace these links later with your real Play Store / App Store URLs -->
+            <a class="btn btn-primary" href="#" title="Add your Play Store link later">Get it on Android</a>
+            <a class="btn" href="#" title="Add your App Store link later">Get it on iOS</a>
+            <a class="btn" href="support.html">Contact Support</a>
+          </div>
+
+          <div class="meta" aria-label="Quick info">
+            <span>Support: <a href="mailto:support@yeriho.com">support@yeriho.com</a></span>
+            <span>Fast replies</span>
+            <span>Privacy-first pages</span>
+          </div>
+        </div>
+
+        <div class="card side-card">
+          <p class="side-title">Quick Links</p>
+          <ul class="side-list">
+            <li><strong style="color:var(--text)">Support</strong><br/>Need help? Tap Support for email & guidance.</li>
+            <li><strong style="color:var(--text)">Account Deletion</strong><br/>Request deletion steps and required details.</li>
+            <li><strong style="color:var(--text)">Privacy Policy</strong><br/>See how data is handled and protected.</li>
+          </ul>
+          <div style="margin-top:auto; color:var(--muted); font-size:13px;">
+            Tip: You can host all pages here and connect your domain <strong style="color:var(--text)">yeriho.com</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div style="padding-top:18px;">
+        <h2 class="section-title">What you’ll find in Yeriho</h2>
+        <p class="section-sub">
+          A focused experience designed to stay lightweight and easy to use. This site includes official support,
+          privacy, and account deletion information.
+        </p>
+
+        <div class="grid">
+          <div class="card feature">
+            <h3>Clean experience</h3>
+            <p>Modern UI with simple navigation and fast load times.</p>
+          </div>
+          <div class="card feature">
+            <h3>Support you can rely on</h3>
+            <p>Use the Support page to reach us quickly via email.</p>
+          </div>
+          <div class="card feature">
+            <h3>Privacy & transparency</h3>
+            <p>Clear policy pages so users know exactly what happens with data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="split">
+          <div>© <span id="y"></span> Yeriho. All rights reserved.</div>
+          <div>
+            <a href="support.html">Support</a> •
+            <a href="account-deletion.html">Account Deletion</a> •
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+        <div style="margin-top:10px;">
+          Contact: <a href="mailto:support@yeriho.com">support@yeriho.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

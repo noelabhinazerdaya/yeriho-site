@@ -197,6 +197,10 @@
       font-size:13.2px;
       font-weight:650;
     }
+    .section a{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .spacer{ height:10px; }
     .bullets{
       margin:10px 0 0;
@@ -474,21 +478,44 @@
               </ul>
             </div>
 
+            <!-- ✅ NEW: Subscriptions section for App Review (3.1.2) -->
+            <div class="section" id="subscriptions">
+              <h3>10. Subscriptions (Auto-Renewal) and Billing</h3>
+              <p>
+                If you purchase an auto-renewable subscription in Yeriho, the following terms apply:
+              </p>
+              <ul class="bullets">
+                <li>Payment is charged to your Apple ID account at confirmation of purchase.</li>
+                <li>Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period.</li>
+                <li>Your account will be charged for renewal within 24 hours prior to the end of the current period, and the cost of renewal will be identified.</li>
+                <li>You can manage or cancel your subscription at any time in iOS Settings → Apple ID → Subscriptions.</li>
+                <li>If a free trial is offered, any unused portion of the free trial will be forfeited when you purchase a subscription.</li>
+              </ul>
+              <div class="spacer"></div>
+              <p>
+                We may offer multiple plans (for example monthly/6-month/yearly) with prices shown in the app at the time of purchase.
+              </p>
+            </div>
+
+            <!-- Renumbered sections below -->
             <div class="section" id="t10">
-              <h3>10. Privacy and Data Collection</h3>
-              <p>We value your privacy. The App:</p>
+              <h3>11. Privacy and Data Collection</h3>
+              <p>
+                We value your privacy. The App may collect and process information as described in our
+                <a href="privacy.html">Privacy Policy</a>.
+              </p>
               <ul class="bullets">
                 <li>May collect the user’s name (if provided).</li>
                 <li>May collect a short bio (if provided).</li>
                 <li>Stores your email address for login/authentication purposes.</li>
-                <li>May collect limited technical data necessary to operate and secure the App, as described in the Privacy Policy.</li>
+                <li>May collect limited technical data necessary to operate and secure the App.</li>
               </ul>
               <div class="spacer"></div>
               <p>By using the App, you consent to data processing in accordance with our Privacy Policy.</p>
             </div>
 
             <div class="section" id="t11">
-              <h3>11. Termination and Suspension</h3>
+              <h3>12. Termination and Suspension</h3>
               <p>We may suspend or terminate your access to the App immediately, without prior notice, if:</p>
               <ul class="bullets">
                 <li>You violate these Terms.</li>
@@ -500,7 +527,7 @@
             </div>
 
             <div class="section" id="t12">
-              <h3>12. Disclaimer (No Warranties)</h3>
+              <h3>13. Disclaimer (No Warranties)</h3>
               <p>
                 The App is provided on an “as is” and “as available” basis. To the fullest extent permitted by law, we disclaim all warranties,
                 express or implied, including fitness for a particular purpose, merchantability, and non-infringement.
@@ -510,7 +537,7 @@
             </div>
 
             <div class="section" id="t13">
-              <h3>13. Limitation of Liability</h3>
+              <h3>14. Limitation of Liability</h3>
               <p>
                 To the fullest extent permitted by law, in no event shall the Owner (or affiliates, employees, agents, partners, or suppliers)
                 be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, goodwill,
@@ -524,7 +551,7 @@
             </div>
 
             <div class="section" id="t14">
-              <h3>14. Changes to These Terms</h3>
+              <h3>15. Changes to These Terms</h3>
               <p>
                 We may update these Terms from time to time. If changes are material, we will make reasonable efforts to provide notice
                 (for example, within the App). Continued use of the App after changes means you accept the revised Terms.
@@ -532,14 +559,14 @@
             </div>
 
             <div class="section" id="t15">
-              <h3>15. Governing Law</h3>
+              <h3>16. Governing Law</h3>
               <p>
                 These Terms shall be governed by and interpreted in accordance with applicable laws, without regard to conflict-of-law principles.
               </p>
             </div>
 
             <div class="section" id="contact">
-              <h3>16. Contact Information</h3>
+              <h3>17. Contact Information</h3>
               <p>If you have questions about these Terms of Service, contact us using the options below:</p>
 
               <div class="spacer"></div>
@@ -593,9 +620,16 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    const d = new Date();
-    const fmt = d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'2-digit' });
-    document.getElementById('lastUpdated').textContent = fmt;
+
+    // ✅ Keep last-updated stable (set a fixed date) OR auto-update.
+    // For App Review, it's better to keep a fixed date unless you truly update content.
+    // Set your real last updated date here:
+    document.getElementById('lastUpdated').textContent = "Feb 19, 2026";
+
+    // If you prefer auto-date, comment the line above and uncomment below:
+    // const d = new Date();
+    // const fmt = d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'2-digit' });
+    // document.getElementById('lastUpdated').textContent = fmt;
   </script>
 </body>
 </html>

@@ -245,6 +245,11 @@
       font-weight:650;
     }
 
+    .inline-links a{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     footer{
       border-top:1px solid rgba(35,48,68,.75);
       padding:18px 0 28px;
@@ -360,18 +365,40 @@
           </div>
 
           <div class="block">
-            <h3>3) Sharing</h3>
-            <p>We may share information only in these cases:</p>
+            <h3>3) Advertising & tracking (ATT on iOS)</h3>
+            <p>
+              Yeriho may show ads in some parts of the app. On iOS, if we request permission to track using Apple’s
+              App Tracking Transparency (ATT) prompt, we will respect your choice:
+            </p>
             <ul>
-              <li><b>Service providers</b> (e.g., hosting, analytics, crash reporting, email/support tooling) who process data for us.</li>
-              <li><b>Legal reasons</b> if required by law or to protect rights and safety.</li>
-              <li><b>Business transfers</b> if the app is involved in a merger, acquisition, or sale (you’ll be notified if required).</li>
+              <li><b>If you allow tracking</b>, we may use Apple’s advertising identifier (IDFA) to help measure ad performance and show more relevant ads.</li>
+              <li><b>If you do not allow tracking</b>, we request <b>non-personalized</b> ads only (for example by setting nonPersonalizedAds=true where supported by the ad SDK).</li>
             </ul>
-            <p>We do not share your personal information for advertising sale purposes.</p>
+            <p>
+              You can change your tracking choice anytime in iOS Settings (Privacy & Security → Tracking).
+            </p>
           </div>
 
           <div class="block">
-            <h3>4) Storage & security</h3>
+            <h3>4) Sharing</h3>
+            <p>We may share information only in these cases:</p>
+            <ul>
+              <li><b>Service providers</b> (e.g., hosting, analytics, crash reporting, support tooling, and ads) who process data for us.</li>
+              <li><b>Legal reasons</b> if required by law or to protect rights and safety.</li>
+              <li><b>Business transfers</b> if the app is involved in a merger, acquisition, or sale (you’ll be notified if required).</li>
+            </ul>
+            <p>
+              We do not sell your personal information. We do not share your personal information with data brokers.
+            </p>
+            <p class="inline-links">
+              Examples of service providers used by some app builds may include:
+              <b>Google AdMob</b> (ads), <b>Firebase</b> (analytics/crash reporting), and similar infrastructure providers.
+              Where used, these providers process data under their own terms and policies.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3>5) Storage & security</h3>
             <p>
               We use reasonable administrative and technical safeguards to protect information.
               However, no method of transmission or storage is 100% secure.
@@ -382,7 +409,7 @@
           </div>
 
           <div class="block">
-            <h3>5) Retention</h3>
+            <h3>6) Retention</h3>
             <p>
               We retain information only as long as needed to provide the app, comply with legal obligations,
               resolve disputes, and enforce agreements.
@@ -405,7 +432,7 @@
           </div>
 
           <div class="block">
-            <h3>6) Your choices & rights</h3>
+            <h3>7) Your choices & rights</h3>
             <p>You may have rights depending on your location, including:</p>
             <ul>
               <li>Request access to or correction of your information.</li>
@@ -418,7 +445,7 @@
           </div>
 
           <div class="block">
-            <h3>7) Children</h3>
+            <h3>8) Children</h3>
             <p>
               Yeriho is not intended for children under the age required by local law for consent.
               If you believe a child provided personal information, contact support to request deletion.
@@ -426,7 +453,7 @@
           </div>
 
           <div class="block">
-            <h3>8) Changes to this policy</h3>
+            <h3>9) Changes to this policy</h3>
             <p>
               We may update this Privacy Policy from time to time. The “Effective date” above will be updated.
               Continued use of the app after changes means you accept the updated policy.
@@ -434,7 +461,7 @@
           </div>
 
           <div class="block">
-            <h3>9) Contact</h3>
+            <h3>10) Contact</h3>
             <p>
               If you have questions about this Privacy Policy or data handling, contact:
             </p>
